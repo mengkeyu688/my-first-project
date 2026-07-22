@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+coverage/
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and runtime data
+logs/
+*.log
+*.pid
+*.seed
+pids/
+
+# ThinkJS generated files
+shopping/shop-backend/runtime/
+shopping/shop-backend/output/
+shopping/shop-backend/output.tar.gz
+shopping/shop-backend/app/
+shopping/shop-backend/config.development.js
+shopping/shop-backend/adapter.development.js
+
+# User-uploaded files (may contain personal data)
+shopping/shop-backend/www/static/uploads/**
+!shopping/shop-backend/www/static/uploads/.gitkeep
+
+# WeChat Mini Program local configuration
+project.private.config.json
+
+# Editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Operating systems
+.DS_Store
+Thumbs.db

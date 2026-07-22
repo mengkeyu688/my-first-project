@@ -1,0 +1,16 @@
+<view class="page favorite-page">
+  <view wx:if="{{products.length}}" class="favorite-list">
+    <view wx:for="{{products}}" wx:key="id" class="favorite-card card" data-id="{{item.id}}" bindtap="goDetail">
+      <image src="{{item.image}}" mode="aspectFill"></image>
+      <view class="favorite-info">
+        <text class="goods-name">{{item.name}}</text>
+        <text class="muted">{{item.desc}}</text>
+        <view class="bottom-row">
+          <text class="price">¥{{item.price}}</text>
+          <button class="ghost-btn" data-id="{{item.id}}" catchtap="removeFavorite">取消收藏</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="empty">还没有收藏商品</view>
+</view>

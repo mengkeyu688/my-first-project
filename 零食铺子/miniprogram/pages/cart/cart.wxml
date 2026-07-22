@@ -1,0 +1,57 @@
+<view class="page cart-page">
+  <view wx:if="{{cart.length}}">
+    <view class="cart-list">
+      <view wx:for="{{cart}}" wx:key="id" class="cart-card card">
+        <view class="select-circle {{item.selected ? 'checked' : ''}}" data-id="{{item.id}}" bindtap="toggleItem"></view>
+        <image src="{{item.product.image}}" mode="aspectFill" data-id="{{item.product.id}}" bindtap="goDetail"></image>
+        <view class="cart-info">
+          <text class="goods-name">{{item.product.name}}</text>
+          <text class="muted">{{item.product.spec}}</text>
+          <text wx:if="{{item.redeem}}" class="redeem-tag">积分兑换</text>
+          <view class="cart-bottom">
+            <text class="price">¥{{item.linePrice}}</text>
+            <view class="stepper">
+              <button data-id="{{item.id}}" bindtap="minusQty">－</button>
+              <text>{{item.qty}}</text>
+              <button data-id="{{item.id}}" bindtap="plusQty">＋</button>
+            </view>
+          </view>
+        </view>
+        <text class="delete" data-id="{{item.id}}" bindtap="deleteItem">删除</text>
+      </view>
+    </view>
+
+    <view class="cost-card card">
+      <view class="cost-row">
+        <text>商品金额</text>
+        <text>¥{{totals.goodsAmount}}</text>
+      </view>
+      <view class="cost-row">
+        <text>优惠券抵扣</text>
+        <text>-¥{{totals.discount}}</text>
+      </view>
+      <view class="cost-row">
+        <text>预计配送费</text>
+        <text>¥{{totals.deliveryFee}}</text>
+      </view>
+      <view class="coupon-tip">{{couponText}}</view>
+    </view>
+  </view>
+
+  <view wx:else class="empty">
+    <text>购物车还是空的</text>
+    <button class="primary-btn empty-btn" bindtap="goHome">去逛逛</button>
+  </view>
+
+  <view wx:if="{{cart.length}}" class="settle-bar fixed-bottom">
+    <view class="all-select" bindtap="toggleAll">
+      <view class="select-circle {{allSelected ? 'checked' : ''}}"></view>
+      <text>全选</text>
+    </view>
+    <view class="settle-total">
+      <text>合计</text>
+      <text class="price">¥{{totals.payAmount}}</text>
+    </view>
+    <button class="primary-btn settle-btn" bindtap="toSubmit">结算</button>
+  </view>
+</view>

@@ -1,0 +1,84 @@
+<view class="category-page">
+  <view class="top-search">
+    <view class="search-box">
+      <text class="search-icon">⌕</text>
+      <input value="{{keyword}}" placeholder="搜索商品" confirm-type="search" bindinput="onKeywordInput" bindconfirm="searchGoods" />
+      <text wx:if="{{keyword}}" class="search-clear" bindtap="clearKeyword">×</text>
+    </view>
+  </view>
+
+  <view class="category-body">
+    <scroll-view class="left-menu" scroll-y enhanced show-scrollbar="{{false}}">
+      <view
+        class="menu-item {{activeCategoryId === 'hot' ? 'active' : ''}}"
+        data-id="hot"
+        bindtap="switchCategory"
+      >
+        热销榜
+      </view>
+      <view
+        wx:for="{{categories}}"
+        wx:key="id"
+        class="menu-item {{activeCategoryId === item.id ? 'active' : ''}}"
+        data-id="{{item.id}}"
+        bindtap="switchCategory"
+      >
+        {{item.name}}
+      </view>
+    </scroll-view>
+
+    <scroll-view
+      class="goods-list"
+      scroll-y
+      enhanced
+      show-scrollbar="{{false}}"
+      scroll-with-animation
+      scroll-into-view="{{scrollIntoView}}"
+      bindscroll="onGoodsScroll"
+    >
+      <block wx:if="{{productSections.length}}">
+        <view
+          wx:for="{{productSections}}"
+          wx:key="id"
+          wx:for-item="section"
+          id="category-{{section.id}}"
+          class="goods-section"
+        >
+          <view class="list-title">
+            <text>{{section.name}}</text>
+            <text class="section-count">{{section.products.length}} 件</text>
+          </view>
+
+          <view wx:if="{{section.products.length}}">
+            <view wx:for="{{section.products}}" wx:key="id" class="goods-card card" data-id="{{item.id}}" bindtap="goDetail">
+              <image src="{{item.image}}" mode="aspectFill"></image>
+              <view class="goods-info">
+                <text class="goods-name">{{item.name}}</text>
+                <text class="muted">{{item.desc}}</text>
+                <view class="goods-meta">
+                  <text>库存 {{item.stock}}</text>
+                  <text>月销 {{item.sales_count_text}}</text>
+                </view>
+                <view class="goods-bottom">
+                  <view>
+                    <text class="price">￥{{item.price}}</text>
+                  </view>
+                  <view class="cart-control {{item.cartQty ? 'active' : ''}}" catchtap="noop">
+                    <button wx:if="{{!item.cartQty}}" class="cart-mini" data-id="{{item.id}}" catchtap="increaseCart">+</button>
+                    <block wx:else>
+                      <button class="qty-btn" data-id="{{item.id}}" catchtap="decreaseCart">-</button>
+                      <text class="qty-text">{{item.cartQty}}</text>
+                      <button class="qty-btn" data-id="{{item.id}}" catchtap="increaseCart">+</button>
+                    </block>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view wx:else class="empty section-empty">暂无商品</view>
+        </view>
+      </block>
+      <view wx:else class="empty">没有找到商品</view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,166 @@
+.mine-page {
+  padding-top: 24rpx;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #ff6b01 0%, #ff9b4a 100%);
+}
+
+.avatar {
+  flex: none;
+  width: 116rpx;
+  height: 116rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+}
+
+.user-info {
+  flex: 1;
+  min-width: 0;
+  padding-left: 22rpx;
+}
+
+.nick {
+  display: block;
+  color: #ffffff;
+  font-size: 36rpx;
+  font-weight: 800;
+}
+
+.user-info .muted {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.points-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 118rpx;
+  height: 118rpx;
+  border-radius: 18rpx;
+  color: #ff6b01;
+  background: #ffffff;
+  flex-direction: column;
+  font-size: 23rpx;
+}
+
+.points-box text:first-child {
+  font-size: 34rpx;
+  font-weight: 900;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 22rpx;
+  padding: 26rpx 0;
+}
+
+.quick-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  flex-direction: column;
+  color: #666666;
+  font-size: 24rpx;
+}
+
+.quick-num {
+  color: #222222;
+  font-size: 34rpx;
+  font-weight: 800;
+}
+
+.redeem-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16rpx;
+}
+
+.redeem-card {
+  display: grid;
+  grid-template-columns: 96rpx 1fr 140rpx;
+  gap: 18rpx;
+  align-items: center;
+  padding: 18rpx;
+}
+
+.redeem-card image {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 12rpx;
+}
+
+.redeem-name {
+  display: block;
+  color: #222222;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.redeem-card .ghost-btn {
+  min-height: 62rpx;
+}
+
+.menu-card {
+  margin-top: 24rpx;
+  padding: 0 24rpx;
+}
+
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  min-height: 92rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+  color: #333333;
+  font-size: 28rpx;
+  line-height: 92rpx;
+}
+
+.menu-row:last-child {
+  border-bottom: none;
+}
+
+.arrow {
+  color: #bbbbbb;
+  font-size: 42rpx;
+}
+
+.browse-scroll {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.browse-card {
+  display: inline-flex;
+  width: 190rpx;
+  min-height: 260rpx;
+  margin-right: 16rpx;
+  padding-bottom: 16rpx;
+  flex-direction: column;
+  vertical-align: top;
+}
+
+.browse-card image {
+  width: 190rpx;
+  height: 170rpx;
+}
+
+.browse-card text {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 12rpx;
+  color: #333333;
+  font-size: 24rpx;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.small-empty {
+  padding: 34rpx;
+}

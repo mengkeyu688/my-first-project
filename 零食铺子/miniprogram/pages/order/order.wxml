@@ -1,0 +1,55 @@
+<view class="page order-page">
+  <scroll-view class="status-tabs" scroll-x enable-flex>
+    <view wx:for="{{tabs}}" wx:key="key" class="status-tab {{activeStatus === item.key ? 'active' : ''}}" data-key="{{item.key}}" bindtap="switchStatus">{{item.name}}</view>
+  </scroll-view>
+
+  <view wx:if="{{orders.length}}">
+    <view wx:for="{{orders}}" wx:key="id" class="order-card card">
+      <view class="order-head">
+        <text>{{item.createdAt}}</text>
+        <text class="status {{item.status}}">{{item.statusText}}</text>
+      </view>
+
+      <view class="goods-line" data-id="{{item.items[0].productId}}" bindtap="goDetail">
+        <image src="{{item.items[0].image}}" mode="aspectFill"></image>
+        <view class="goods-info">
+          <text class="goods-name">{{item.items[0].name}}</text>
+          <text class="muted">共 {{item.items.length}} 件商品 · {{item.deliveryMethodText}}</text>
+        </view>
+        <text class="price">¥{{item.payAmount}}</text>
+      </view>
+
+      <view class="order-address">
+        <text>{{item.address.building}} {{item.address.room}}</text>
+        <text>{{item.address.phone}}</text>
+      </view>
+
+      <view wx:if="{{item.evaluation}}" class="eval-result">
+        <text>评价：{{item.evaluation.rating}} 星</text>
+        <text>{{item.evaluation.content}}</text>
+      </view>
+
+      <view wx:if="{{evalOrderId === item.id}}" class="eval-box">
+        <view class="stars">
+          <text wx:for="{{starList}}" wx:for-item="star" wx:key="*this" class="{{evalRating >= star ? 'active' : ''}}" data-score="{{star}}" bindtap="setRating">★</text>
+        </view>
+        <textarea value="{{evalContent}}" placeholder="写下你的评价" maxlength="120" bindinput="onEvalInput"></textarea>
+        <view class="eval-images">
+          <image wx:for="{{evalImages}}" wx:key="*this" src="{{item}}" mode="aspectFill"></image>
+          <button class="ghost-btn upload-btn" bindtap="chooseEvalImage">上传图片</button>
+        </view>
+        <button class="primary-btn" data-id="{{item.id}}" bindtap="submitEval">提交评价</button>
+      </view>
+
+      <view class="order-actions">
+        <button wx:if="{{item.status === 'unpaid' || item.status === 'pending'}}" class="ghost-btn" data-id="{{item.id}}" bindtap="toPay">去支付</button>
+        <button wx:if="{{item.status === 'unpaid' || item.status === 'pending'}}" class="ghost-btn" data-id="{{item.id}}" bindtap="cancelOrder">取消订单</button>
+        <button wx:if="{{item.status === 'paid' || item.status === 'delivery'}}" class="ghost-btn" data-id="{{item.id}}" bindtap="confirmReceive">确认收货</button>
+        <button wx:if="{{item.status === 'finished' && !item.evaluation}}" class="ghost-btn" data-id="{{item.id}}" bindtap="openEval">评价</button>
+        <button class="primary-small" data-id="{{item.id}}" bindtap="againOrder">再来一单</button>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="empty">暂无订单</view>
+</view>

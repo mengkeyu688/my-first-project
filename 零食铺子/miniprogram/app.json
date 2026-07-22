@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/category/category",
+    "pages/cart/cart",
+    "pages/order/order",
+    "pages/mine/mine",
+    "pages/detail/detail",
+    "pages/submit/submit",
+    "pages/pay/pay",
+    "pages/pay-success/pay-success",
+    "pages/favorite/favorite",
+    "pages/coupon/coupon",
+    "pages/admin/admin"
+  ],
+  "window": {
+    "navigationBarTitleText": "宿舍零食商城",
+    "navigationBarBackgroundColor": "#ff6b01",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#fff7f0",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#ff6b01",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/category/category",
+        "text": "首页",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "images/tab-cart.png",
+        "selectedIconPath": "images/tab-cart-active.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "images/tab-order.png",
+        "selectedIconPath": "images/tab-order-active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/tab-mine.png",
+        "selectedIconPath": "images/tab-mine-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,159 @@
+.submit-page {
+  padding-bottom: calc(140rpx + env(safe-area-inset-bottom));
+}
+
+.form-card,
+.goods-card,
+.amount-card {
+  margin-bottom: 22rpx;
+  padding: 24rpx;
+}
+
+.form-title {
+  margin-bottom: 12rpx;
+  color: #222222;
+  font-size: 32rpx;
+  font-weight: 800;
+}
+
+.form-row,
+.method-row {
+  display: flex;
+  align-items: center;
+  min-height: 86rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.form-row > text,
+.method-row > text,
+.remark-row > text {
+  flex: none;
+  width: 160rpx;
+  color: #666666;
+  font-size: 27rpx;
+}
+
+.form-row input,
+.form-row picker {
+  flex: 1;
+  min-width: 0;
+  height: 86rpx;
+  line-height: 86rpx;
+}
+
+.picker-value {
+  color: #222222;
+}
+
+.method-options {
+  display: flex;
+  flex: 1;
+  gap: 14rpx;
+}
+
+.method {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 64rpx;
+  border: 1rpx solid #eeeeee;
+  border-radius: 12px;
+  color: #666666;
+  font-size: 25rpx;
+}
+
+.method.active {
+  border-color: #ff6b01;
+  color: #ff6b01;
+  background: #fff1e5;
+  font-weight: 700;
+}
+
+.remark-row {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 22rpx;
+}
+
+.remark-row textarea {
+  flex: 1;
+  min-height: 130rpx;
+  padding: 16rpx;
+  border-radius: 12px;
+  background: #f8f8f8;
+  font-size: 26rpx;
+}
+
+.order-goods {
+  display: flex;
+  align-items: center;
+  min-height: 138rpx;
+  border-bottom: 1rpx solid #f4f4f4;
+}
+
+.order-goods:last-child {
+  border-bottom: none;
+}
+
+.order-goods image {
+  flex: none;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 12rpx;
+}
+
+.order-info {
+  flex: 1;
+  min-width: 0;
+  padding: 0 18rpx;
+}
+
+.goods-name {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #222222;
+  font-size: 28rpx;
+  font-weight: 700;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.amount-row {
+  display: flex;
+  justify-content: space-between;
+  min-height: 62rpx;
+  color: #555555;
+  font-size: 27rpx;
+}
+
+.coupon-line {
+  margin: 10rpx 0 18rpx;
+  padding: 16rpx;
+  border-radius: 12px;
+  color: #ff6b01;
+  background: #fff1e5;
+  font-size: 24rpx;
+}
+
+.total {
+  align-items: center;
+  padding-top: 18rpx;
+  font-weight: 800;
+}
+
+.total .price {
+  font-size: 40rpx;
+}
+
+.submit-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22rpx;
+}
+
+.submit-bar .primary-btn {
+  width: 330rpx;
+}

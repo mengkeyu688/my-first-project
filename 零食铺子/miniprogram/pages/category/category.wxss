@@ -1,0 +1,266 @@
+.category-page {
+  min-height: 100vh;
+  background: #fff7f0;
+}
+
+.top-search {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 18rpx 24rpx;
+  background: #fff7f0;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  height: 78rpx;
+  padding: 0 22rpx;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8rpx 24rpx rgba(255, 107, 1, 0.1);
+}
+
+.search-icon {
+  width: 42rpx;
+  color: #ff6b01;
+  font-size: 34rpx;
+}
+
+.search-box input {
+  flex: 1;
+  height: 78rpx;
+  color: #333333;
+  font-size: 27rpx;
+}
+
+.search-clear {
+  width: 44rpx;
+  color: #999999;
+  text-align: center;
+  font-size: 40rpx;
+}
+
+.category-body {
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 114rpx);
+  overflow: hidden;
+}
+
+.left-menu {
+  position: relative;
+  z-index: 30;
+  flex: none;
+  width: 150rpx;
+  height: 100%;
+  background: #ffffff;
+}
+
+.menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 86rpx;
+  padding: 0 8rpx;
+  color: #666666;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.menu-item.active {
+  color: #ff6b01;
+  background: #fff7f0;
+  font-weight: 700;
+}
+
+.menu-item.active::before {
+  position: absolute;
+  top: 26rpx;
+  left: 0;
+  width: 8rpx;
+  height: 40rpx;
+  border-radius: 8rpx;
+  background: #ff6b01;
+  content: "";
+}
+
+.goods-list {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: calc(100vw - 150rpx);
+  min-width: 0;
+  height: 100%;
+  padding: 0 12rpx 150rpx;
+  overflow: hidden;
+}
+
+.list-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12rpx 0 18rpx;
+  color: #222222;
+  font-size: 32rpx;
+  font-weight: 800;
+}
+
+.section-count {
+  color: #999999;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.section-empty {
+  margin-bottom: 18rpx;
+  padding: 48rpx 0;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.goods-section {
+  width: 100%;
+}
+
+.goods-card {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  height: 206rpx;
+  margin-bottom: 14rpx;
+  padding: 14rpx;
+}
+
+.goods-card image {
+  flex: none;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 14rpx;
+  background: #f6f6f6;
+}
+
+.goods-info {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  padding-left: 14rpx;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.goods-name {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #222222;
+  font-size: 27rpx;
+  font-weight: 700;
+  line-height: 1.3;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.goods-info .muted {
+  overflow: hidden;
+  font-size: 22rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.goods-meta {
+  display: flex;
+  gap: 12rpx;
+  color: #999999;
+  font-size: 22rpx;
+}
+
+.goods-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52rpx;
+}
+
+.price {
+  color: #ff6b01;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.cart-control {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: none;
+  height: 56rpx;
+}
+
+.cart-control.active {
+  gap: 8rpx;
+  min-width: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.cart-mini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 56rpx;
+  height: 56rpx;
+  min-width: 56rpx;
+  max-width: 56rpx;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #ff6b01;
+  box-shadow: none;
+  font-size: 36rpx;
+  font-weight: 700;
+  line-height: 56rpx;
+}
+
+.cart-mini::after {
+  border: none;
+}
+
+.qty-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 40rpx;
+  height: 40rpx;
+  min-width: 40rpx;
+  max-width: 40rpx;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #ff6b01;
+  box-shadow: none;
+  font-size: 34rpx;
+  font-weight: 800;
+  line-height: 40rpx;
+}
+
+.qty-btn::after {
+  border: none;
+}
+
+.qty-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28rpx;
+  height: 40rpx;
+  color: #222222;
+  font-size: 24rpx;
+  font-weight: 800;
+}

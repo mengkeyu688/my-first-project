@@ -1,0 +1,45 @@
+.favorite-card {
+  display: flex;
+  min-height: 220rpx;
+  margin-bottom: 18rpx;
+  padding: 18rpx;
+}
+
+.favorite-card image {
+  flex: none;
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 14rpx;
+}
+
+.favorite-info {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  padding-left: 18rpx;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.goods-name {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #222222;
+  font-size: 29rpx;
+  font-weight: 700;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottom-row .ghost-btn {
+  min-height: 58rpx;
+  padding: 0 18rpx;
+  font-size: 24rpx;
+}

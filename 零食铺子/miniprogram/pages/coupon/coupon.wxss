@@ -1,0 +1,72 @@
+.coupon-card {
+  display: flex;
+  align-items: center;
+  min-height: 180rpx;
+  margin-bottom: 18rpx;
+  padding: 24rpx;
+  background: #ffffff;
+}
+
+.coupon-card.used {
+  opacity: 0.55;
+}
+
+.coupon-amount {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex: none;
+  width: 150rpx;
+  color: #ff6b01;
+  font-weight: 900;
+}
+
+.coupon-amount text:first-child {
+  font-size: 28rpx;
+}
+
+.coupon-amount text:last-child {
+  font-size: 62rpx;
+}
+
+.coupon-info {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  gap: 8rpx;
+  flex-direction: column;
+}
+
+.coupon-name {
+  color: #222222;
+  font-size: 31rpx;
+  font-weight: 800;
+}
+
+.coupon-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #ff6b01;
+  font-size: 24rpx;
+}
+
+.used .coupon-status {
+  background: #aaaaaa;
+}
+
+.tip-card {
+  margin-top: 24rpx;
+  padding: 24rpx;
+  color: #666666;
+  font-size: 26rpx;
+  line-height: 1.65;
+}
+
+.tip-card .section-title {
+  margin-bottom: 10rpx;
+}

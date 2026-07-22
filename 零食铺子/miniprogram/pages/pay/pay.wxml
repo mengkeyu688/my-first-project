@@ -1,0 +1,37 @@
+<view class="page pay-page">
+  <view class="pay-card card">
+    <view class="pay-logo {{paying ? 'loading' : ''}}">¥</view>
+    <text class="pay-title">模拟支付</text>
+    <text class="muted">本流程不调用真实微信支付，仅由后端模拟订单支付状态</text>
+    <text class="pay-amount">¥{{order.totalAmountText}}</text>
+
+    <view class="pay-info">
+      <view>
+        <text>订单编号</text>
+        <text>{{order.orderNo || order.id}}</text>
+      </view>
+      <view>
+        <text>订单状态</text>
+        <text>{{order.statusText}}</text>
+      </view>
+      <view>
+        <text>支付方式</text>
+        <text>后端模拟支付</text>
+      </view>
+    </view>
+
+    <view wx:if="{{order.items && order.items.length}}" class="pay-items">
+      <view wx:for="{{order.items}}" wx:key="productId" class="pay-item">
+        <text>{{item.name}}</text>
+        <text>x{{item.quantity}}</text>
+      </view>
+    </view>
+
+    <button class="primary-btn" loading="{{paying}}" disabled="{{paying || order.status === 'paid'}}" bindtap="payOrder">{{payText}}</button>
+    <view class="mock-actions">
+      <button class="ghost-btn" disabled="{{paying || order.status === 'paid'}}" bindtap="simulateFail">模拟失败</button>
+      <button class="ghost-btn" disabled="{{paying || order.status === 'paid'}}" bindtap="simulateCancel">模拟取消</button>
+    </view>
+    <button class="ghost-btn back-btn" bindtap="backOrder">稍后支付</button>
+  </view>
+</view>

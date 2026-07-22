@@ -1,0 +1,75 @@
+<view class="page submit-page">
+  <view class="card form-card">
+    <view class="form-title">配送信息</view>
+    <view class="form-row">
+      <text>宿舍楼</text>
+      <input value="{{form.building}}" placeholder="例如 6 号楼" data-field="building" bindinput="onFormInput" />
+    </view>
+    <view class="form-row">
+      <text>宿舍号</text>
+      <input value="{{form.room}}" placeholder="例如 508" data-field="room" bindinput="onFormInput" />
+    </view>
+    <view class="form-row">
+      <text>联系电话</text>
+      <input value="{{form.phone}}" type="number" maxlength="11" placeholder="用于配送联系" data-field="phone" bindinput="onFormInput" />
+    </view>
+    <view class="form-row">
+      <text>配送时间</text>
+      <picker mode="selector" range="{{timeOptions}}" value="{{timeIndex}}" bindchange="onTimeChange">
+        <view class="picker-value">{{timeOptions[timeIndex]}}</view>
+      </picker>
+    </view>
+    <view class="method-row">
+      <text>配送方式</text>
+      <view class="method-options">
+        <view class="method {{deliveryMethod === 'door' ? 'active' : ''}}" data-method="door" bindtap="switchMethod">送宿舍门口</view>
+        <view class="method {{deliveryMethod === 'pickup' ? 'active' : ''}}" data-method="pickup" bindtap="switchMethod">楼下自取</view>
+      </view>
+    </view>
+    <view class="remark-row">
+      <text>备注</text>
+      <textarea value="{{form.remark}}" placeholder="可填写口味、无接触配送等备注" maxlength="80" data-field="remark" bindinput="onFormInput"></textarea>
+    </view>
+  </view>
+
+  <view class="card goods-card">
+    <view class="form-title">商品清单</view>
+    <view wx:for="{{items}}" wx:key="id" class="order-goods">
+      <image src="{{item.product.image}}" mode="aspectFill"></image>
+      <view class="order-info">
+        <text class="goods-name">{{item.product.name}}</text>
+        <text class="muted">x{{item.qty}}</text>
+      </view>
+      <text class="price">¥{{item.subTotal}}</text>
+    </view>
+  </view>
+
+  <view class="card amount-card">
+    <view class="amount-row">
+      <text>商品金额</text>
+      <text>¥{{totals.goodsAmount}}</text>
+    </view>
+    <view class="amount-row">
+      <text>配送费</text>
+      <text>¥{{totals.deliveryFee}}</text>
+    </view>
+    <view class="amount-row">
+      <text>优惠金额</text>
+      <text>-¥{{totals.discount}}</text>
+    </view>
+    <view class="coupon-line">{{couponText}}</view>
+    <view class="line"></view>
+    <view class="amount-row total">
+      <text>实付金额</text>
+      <text class="price">¥{{totals.payAmount}}</text>
+    </view>
+  </view>
+
+  <view class="submit-bar fixed-bottom">
+    <view>
+      <text class="muted">实付</text>
+      <text class="price">¥{{totals.payAmount}}</text>
+    </view>
+    <button class="primary-btn" bindtap="submitOrder">提交订单并支付</button>
+  </view>
+</view>

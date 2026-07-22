@@ -1,0 +1,210 @@
+<view class="page admin-page">
+  <view wx:if="{{!logged}}" class="login-card card">
+    <text class="login-title">管理员登录</text>
+    <text class="muted">账号 admin，密码 123456</text>
+    <input value="{{account}}" placeholder="管理员账号" bindinput="onAccountInput" />
+    <input value="{{password}}" password placeholder="管理员密码" bindinput="onPasswordInput" />
+    <button class="primary-btn" bindtap="login">登录后台</button>
+  </view>
+
+  <view wx:else>
+    <view class="admin-head card">
+      <view>
+        <text class="admin-title">宿舍零食商城后台</text>
+        <text class="muted">接口管理端</text>
+      </view>
+      <button class="ghost-btn" bindtap="logout">退出</button>
+    </view>
+
+    <scroll-view class="admin-tabs" scroll-x enable-flex>
+      <view wx:for="{{tabs}}" wx:key="key" class="admin-tab {{activeTab === item.key ? 'active' : ''}}" data-key="{{item.key}}" bindtap="switchTab">{{item.name}}</view>
+    </scroll-view>
+
+    <view wx:if="{{activeTab === 'dashboard'}}">
+      <view class="stats-grid">
+        <view class="stat-card card">
+          <text>{{stats.todayAmount}}</text>
+          <text>今日销售额</text>
+        </view>
+        <view class="stat-card card">
+          <text>{{stats.weekAmount}}</text>
+          <text>本周销售额</text>
+        </view>
+        <view class="stat-card card">
+          <text>{{stats.monthAmount}}</text>
+          <text>本月销售额</text>
+        </view>
+        <view class="stat-card card">
+          <text>{{stats.orderCount}}</text>
+          <text>订单数量</text>
+        </view>
+      </view>
+
+      <view class="panel card">
+        <view class="section-title">热销商品排行</view>
+        <view wx:if="{{stats.hotRank.length}}">
+          <view wx:for="{{stats.hotRank}}" wx:key="id" class="rank-row">
+            <image src="{{item.image}}" mode="aspectFill"></image>
+            <text>{{index + 1}}. {{item.name}}</text>
+            <text>{{item.qty}} 件</text>
+          </view>
+        </view>
+        <view wx:else class="empty small-empty">暂无已付款订单数据</view>
+      </view>
+
+      <view class="panel card">
+        <view class="section-title">库存预警</view>
+        <view wx:if="{{stats.stockWarnings.length}}">
+          <view wx:for="{{stats.stockWarnings}}" wx:key="id" class="warning-row">
+            <text>{{item.name}}</text>
+            <text>库存 {{item.stock}}</text>
+          </view>
+        </view>
+        <view wx:else class="empty small-empty">暂无低库存商品</view>
+      </view>
+    </view>
+
+    <view wx:elif="{{activeTab === 'products'}}">
+      <view class="panel card">
+        <view class="section-title">{{editProductId ? '修改商品' : '新增商品'}}</view>
+        <view class="admin-form-row">
+          <text>名称</text>
+          <input value="{{productForm.name}}" placeholder="商品名称" data-field="name" bindinput="onProductInput" />
+        </view>
+        <view class="admin-form-row">
+          <text>分类</text>
+          <picker mode="selector" range="{{categoryNames}}" value="{{productCategoryIndex}}" bindchange="onProductCategoryChange">
+            <view class="picker-value">{{productForm.category || '请选择分类'}}</view>
+          </picker>
+        </view>
+        <view class="admin-form-row">
+          <text>价格</text>
+          <input value="{{productForm.price}}" type="digit" placeholder="价格" data-field="price" bindinput="onProductInput" />
+        </view>
+        <view class="admin-form-row">
+          <text>原价</text>
+          <input value="{{productForm.originPrice}}" type="digit" placeholder="原价" data-field="originPrice" bindinput="onProductInput" />
+        </view>
+        <view class="admin-form-row">
+          <text>库存</text>
+          <input value="{{productForm.stock}}" type="number" placeholder="库存" data-field="stock" bindinput="onProductInput" />
+        </view>
+        <view class="admin-form-row">
+          <text>描述</text>
+          <input value="{{productForm.desc}}" placeholder="商品描述" data-field="desc" bindinput="onProductInput" />
+        </view>
+        <view class="admin-form-row">
+          <text>规格</text>
+          <input value="{{productForm.spec}}" placeholder="规格参数" data-field="spec" bindinput="onProductInput" />
+        </view>
+        <view class="form-actions">
+          <button class="primary-btn" bindtap="saveProduct">{{editProductId ? '保存修改' : '新增商品'}}</button>
+          <button class="ghost-btn" bindtap="resetProductForm">重置</button>
+        </view>
+      </view>
+
+      <view class="product-list">
+        <view wx:for="{{products}}" wx:key="id" class="admin-product card">
+          <image src="{{item.image}}" mode="aspectFill"></image>
+          <view class="admin-product-info">
+            <text class="goods-name">{{item.name}}</text>
+            <text class="muted">{{item.category}} · 库存 {{item.stock}} · 月销 {{item.sales_count_text}}</text>
+            <view class="price-line">
+              <text class="price">¥{{item.price}}</text>
+              <text class="shelf {{item.status === 'off' ? 'off' : ''}}">{{item.status === 'off' ? '已下架' : '已上架'}}</text>
+            </view>
+            <view class="admin-actions">
+              <button class="ghost-btn" data-id="{{item.id}}" bindtap="editProduct">修改</button>
+              <button class="ghost-btn" data-id="{{item.id}}" bindtap="toggleShelf">{{item.status === 'off' ? '上架' : '下架'}}</button>
+              <button class="ghost-btn" data-id="{{item.id}}" data-type="minus" bindtap="changeStock">减库存</button>
+              <button class="ghost-btn" data-id="{{item.id}}" data-type="plus" bindtap="changeStock">加库存</button>
+              <button class="ghost-btn danger-text" data-id="{{item.id}}" bindtap="removeProduct">删除</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:elif="{{activeTab === 'categories'}}">
+      <view class="panel card">
+        <view class="section-title">{{editCategoryId ? '修改分类' : '新增分类'}}</view>
+        <view class="admin-form-row">
+          <text>分类名</text>
+          <input value="{{categoryInput}}" placeholder="输入分类名称" bindinput="onCategoryInput" />
+        </view>
+        <view class="form-actions">
+          <button class="primary-btn" bindtap="saveCategory">{{editCategoryId ? '保存分类' : '新增分类'}}</button>
+          <button class="ghost-btn" bindtap="resetCategoryForm">重置</button>
+        </view>
+      </view>
+
+      <view class="panel card">
+        <view wx:for="{{categories}}" wx:key="id" class="category-row">
+          <view>
+            <text>{{item.name}}</text>
+            <text class="muted">{{item.id}}</text>
+          </view>
+          <view class="row-actions">
+            <button class="ghost-btn" data-id="{{item.id}}" bindtap="editCategory">修改</button>
+            <button class="ghost-btn danger-text" data-id="{{item.id}}" bindtap="removeCategory">删除</button>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:elif="{{activeTab === 'orders'}}">
+      <view wx:if="{{orders.length}}">
+        <view wx:for="{{orders}}" wx:key="id" class="admin-order card">
+          <view class="order-head">
+            <text>{{item.id}}</text>
+            <text class="status">{{item.statusText}}</text>
+          </view>
+          <view class="order-goods">
+            <image src="{{item.items[0].image}}" mode="aspectFill"></image>
+            <view>
+              <text class="goods-name">{{item.items[0].name}}</text>
+              <text class="muted">共 {{item.items.length}} 件 · ¥{{item.payAmount}}</text>
+            </view>
+          </view>
+          <view class="order-info-line">
+            <text>{{item.address.building}} {{item.address.room}}</text>
+            <text>{{item.address.phone}}</text>
+          </view>
+          <view class="order-info-line">
+            <text>{{item.deliveryMethodText}}</text>
+            <text>{{item.deliveryTime}}</text>
+          </view>
+          <picker mode="selector" range="{{statusOptions}}" value="{{item.statusIndex}}" data-id="{{item.id}}" bindchange="changeOrderStatus">
+            <view class="status-picker">修改状态：{{item.statusText}}</view>
+          </picker>
+        </view>
+      </view>
+      <view wx:else class="empty">暂无订单</view>
+    </view>
+
+    <view wx:elif="{{activeTab === 'users'}}">
+      <view class="stats-grid">
+        <view class="stat-card card">
+          <text>{{stats.userCount}}</text>
+          <text>用户数量</text>
+        </view>
+        <view class="stat-card card">
+          <text>{{stats.orderCount}}</text>
+          <text>订单数量</text>
+        </view>
+        <view class="stat-card card">
+          <text>{{stats.totalAmount}}</text>
+          <text>消费金额</text>
+        </view>
+        <view class="stat-card card">
+          <text>{{products.length}}</text>
+          <text>商品数量</text>
+        </view>
+      </view>
+      <view class="panel card">
+        <view class="section-title">配送管理</view>
+        <text class="admin-copy">配送中订单可在订单管理中修改为配送中或已完成；后期可接入骑手、楼栋路线和预计送达接口。</text>
+      </view>
+    </view>
+  </view>
+</view>

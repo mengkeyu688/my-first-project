@@ -1,0 +1,65 @@
+.success-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-bottom: 24rpx;
+}
+
+.success-card {
+  width: 100%;
+  padding: 46rpx 32rpx;
+  text-align: center;
+}
+
+.success-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 0 auto 22rpx;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #19a974;
+  font-size: 76rpx;
+  font-weight: 900;
+}
+
+.success-title {
+  display: block;
+  color: #222222;
+  font-size: 38rpx;
+  font-weight: 900;
+}
+
+.success-amount {
+  display: block;
+  margin: 32rpx 0;
+  color: #ff6b01;
+  font-size: 64rpx;
+  font-weight: 900;
+}
+
+.success-info,
+.success-items {
+  margin: 24rpx 0;
+  padding: 18rpx 22rpx;
+  border-radius: 12px;
+  background: #fafafa;
+  text-align: left;
+}
+
+.success-info view,
+.success-item {
+  display: flex;
+  justify-content: space-between;
+  min-height: 52rpx;
+  color: #555555;
+  font-size: 25rpx;
+}
+
+.success-card .primary-btn,
+.success-card .ghost-btn {
+  margin-top: 18rpx;
+}

@@ -1,0 +1,131 @@
+page {
+  min-height: 100%;
+  color: #222222;
+  background: #fff7f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 28rpx;
+}
+
+view,
+text,
+button,
+input,
+textarea,
+picker,
+image {
+  box-sizing: border-box;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border-radius: 12px;
+  line-height: 1;
+  background: transparent;
+}
+
+button::after {
+  border: none;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 24rpx;
+  padding-bottom: calc(140rpx + env(safe-area-inset-bottom));
+}
+
+.section {
+  margin-top: 24rpx;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.muted {
+  color: #888888;
+  font-size: 24rpx;
+}
+
+.price {
+  color: #ff6b01;
+  font-weight: 800;
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10rpx 28rpx rgba(255, 107, 1, 0.12);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48rpx;
+  padding: 0 20rpx;
+  border-radius: 999px;
+  color: #ff6b01;
+  background: #fff1e5;
+  font-size: 24rpx;
+}
+
+.primary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 88rpx;
+  padding: 0 28rpx;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #ff6b01;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.ghost-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72rpx;
+  padding: 0 24rpx;
+  border: 1rpx solid #ffb27a;
+  border-radius: 12px;
+  color: #ff6b01;
+  background: #fff7f0;
+  font-size: 26rpx;
+}
+
+.danger-btn {
+  color: #ffffff;
+  background: #e54848;
+}
+
+.line {
+  height: 1rpx;
+  background: #f0f0f0;
+}
+
+.empty {
+  padding: 90rpx 24rpx;
+  text-align: center;
+  color: #999999;
+}
+
+.fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  padding: 18rpx 24rpx calc(18rpx + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 -8rpx 30rpx rgba(0, 0, 0, 0.08);
+}
